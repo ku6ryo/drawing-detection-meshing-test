@@ -91,9 +91,7 @@ function App() {
                 ctx.globalAlpha = 0.5
                 ctx.fill()
               }
-              const { triangles } = triangulate(points)
-              console.log(triangles)
-              const triangleIndices = triangles
+              const triangleIndices = triangulate(points)
               for (let i = 0; i < triangleIndices.length; i ++) {
                 const ps = triangleIndices[i].map((i) => points[i])
                 drawClosedPolygon(ps)

@@ -31,7 +31,6 @@ export function triangulate(
 ) {
   const pointIndices = points.map((_, i) => i)
   const triangles: number[][] = []
-  let count = 0
   while (pointIndices.length > 2) {
     const { index: i, triangle } = pointIndices.reduce((prev, _, i) => {
       const iP = pointIndices[i - 1] ?? pointIndices[pointIndices.length - 1]
@@ -58,9 +57,6 @@ export function triangulate(
     if (i === null || !triangle) throw new Error("Failed to find the best index")
     pointIndices.splice(i, 1)
     triangles.push(triangle)
-    count += 1
   }
-  return {
-    triangles,
-  }
+  return triangles
 }
